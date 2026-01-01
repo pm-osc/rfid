@@ -448,6 +448,20 @@ namespace MFRC522 {
        return id
    }
 
+   /*
+    * Function to try reading ID from card without waiting for a card to be presented
+    * If no ID is found, 0 is returned
+    */
+   //% block="Read ID once"
+   //% weight=95
+   export function getIDOnce() {
+       let id = readID()
+       if (id!=undefined){
+          return id
+       }
+       return 0
+   }
+
     /*
      * Function to read Data from card
      */
@@ -463,6 +477,20 @@ namespace MFRC522 {
            }
        }
        return text
+   }
+
+    /*
+     * Function to try reading Data from card without waiting for a card to be presented
+     * If no card is presented to the reader, null is returned
+     */
+    //% block="Read data once"
+    //% weight=90
+   export function readOnce():string {
+       let text = readFromCard()
+       if (text) {
+           return text
+       }
+       return null
    }
 
 

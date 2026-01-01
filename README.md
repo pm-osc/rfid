@@ -26,19 +26,35 @@ MFRC522.Init()
 ```
 
 ## Read ID from card
-This function reads the cards unique ID and returns it.
+This function reads the cards unique ID and returns it. This function blocks execution until a card is presented to the reader.
 
 ```typescript
 // Read unique ID
 MFRC522.getID()
 ```
 
+## Read ID from card once
+This function attempts to read the cards unique ID. In case a card is presented to the reader when the function is called, it returns the cards unique ID, otherwise it returns 0. This function does not block execution and should be called in a loop in order to detect the case when a card is presented to the reader.
+
+```typescript
+// Read unique ID once
+MFRC522.getIDOnce()
+```
+
 ## Read data from card
-Data stored on the card can be retrieved with this function.
+Data stored on the card can be retrieved with this function. This function blocks execution until a card is presented to the reader.
 
 ```typescript
 // Read data
 MFRC522.read()
+```
+
+## Read data from card once
+This function attempts to read the data stored on the card. In case a card is presented to the reader when the function is called, it returns the data stored on the card, otherwise it returns `null`. This function does not block execution and should be called in a loop in order to detect the case when a card is presented to the reader.
+
+```typescript
+// Read data once
+MFRC522.readOnce()
 ```
 
 ## Write data to card
